@@ -1,5 +1,5 @@
 -module(temps).
--export(format_temps/1).
+-export([format_temps/1]).
 
 %*************Temperature conversions*********************************
 format_temps([]) -> ok;
