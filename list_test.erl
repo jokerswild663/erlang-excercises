@@ -1,17 +1,15 @@
 -module(list_test).
--export([list_length/1, format_temps/1]).
+-export([list_length/1,max_list/1]).
 
 list_length([]) -> 0;
 list_length([First | Rest]) -> 1 + list_length(Rest).
 
+%*****************************Max list************************
 
-%*************Temperature conversions*********************************
-format_temps([]) -> ok;
-format_temps([City | RestCities]) -> print_temp(convert_to_celsius(City)), 
-format_temps(RestCities).
+max_list([Head | Rest]) -> max_list(Rest,Head).
 
-convert_to_celsius({Name, {c,Temp}}) -> {Name, {c,Temp}};
-convert_to_celsius({Name, {f,Temp}}) -> {Name, {c,(Temp - 32) * 5 / 9}}.
+max_list([], Result_so_far) -> Result_so_far;
+max_list([Head | Remaining], Result_so_far) when Head > Result_so_far -> max_list(Remaining, Head);
+max_list([Head | Remaining], Result_so_far) -> max_list(Remaining, Result_so_far).
 
-print_temp({Name, {C,Temp}}) -> io:format("~-15w ~w c~n", [Name,Temp]).
-%***********************************************************************
+%*************************************************************
