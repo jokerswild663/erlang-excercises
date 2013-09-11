@@ -1,5 +1,5 @@
 -module(list_test).
--export([list_length/1,max_list/1,min_list/1,reverse_list/1]).
+-export([list_length/1,max_list/1,min_list/1,reverse_list/1,test_map/0]).
 
 list_length([]) -> 0;
 list_length([First | Rest]) -> 1 + list_length(Rest).
@@ -32,3 +32,5 @@ reverse_list([Head | First_List], New_List) -> reverse_list(First_List, [Head | 
 reverse_list([], New_List) -> New_List.
 
 %*************************************************************
+
+test_map() -> lists:map(fun(X) -> X * 2 end, [1,2,3]).
