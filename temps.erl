@@ -1,5 +1,5 @@
 -module(temps).
--export([format_temps/1, find_min/1,find_max/1]).
+-export([format_temps/1, find_min/1,find_max/1,convert_to_c/1]).
 
 %*************Temperature conversions*********************************
 format_temps([]) -> ok;
@@ -9,7 +9,7 @@ format_temps(RestCities).
 convert_to_celsius({Name, {c,Temp}}) -> {Name, {c,Temp}};
 convert_to_celsius({Name, {f,Temp}}) -> {Name, {c,(Temp - 32) * 5 / 9}}.
 
-
+convert_to_c(List) -> lists:map(fun convert_to_celsius/1, List).
 
 find_min([Head | City_List]) -> find_min(City_List, Head).
 
