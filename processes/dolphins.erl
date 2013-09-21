@@ -22,3 +22,15 @@ dolphin2() ->
       io:format("Haha. ~n"),
       dolphin2()
   end.
+
+dolphin3() ->
+  receive
+    {From, flip} ->
+      From ! "flip",
+      dolphin3();
+    {From, fish} ->
+      From ! "thanks!";
+    {From, argg } ->
+      From ! "don't make me destroy you!",
+      dolphin3() 
+  end.
